@@ -16,7 +16,7 @@ jobs:
       - name: Delete old backups (keep only 5 newest)
         run: |
           echo "🧹 Starting cleanup..."
-          ls -t backup_*.json | tail -n +6 | xargs rm -f || true
+          ls backup_*.json | sort -r | tail -n +6 | xargs rm -f || true
           echo "✅ Cleanup done."
 
       - name: Commit and push changes
